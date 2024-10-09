@@ -1,6 +1,8 @@
 {
   "rewrites": [
-    { "source": "/about", "destination": "/" },
+    { "source": "/dashboard", "destination": "/" },
+    { "source": "/dashboard/quizless", "destination": "/" },
+    { "source": "/dashboard/quizless", "destination": "/" },
     { "source": "/(.*)", "destination": "/" }
   ]
 }

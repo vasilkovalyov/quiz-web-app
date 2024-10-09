@@ -1,0 +1,45 @@
+%admin-content {
+  max-width: calc(100% - var(--admin-navigation-width));
+  width: 100%;
+  margin-left: auto;
+  padding-inline: 14px;
+}
+
+// @use 'styles/mixins' as mixins; - if you want to use in in components folder
+// @use 'path-to-file/mixins' as mixins; - if you want to use inside styles folder
+//e.g  @include animate(color border)
+//e.g  @include animate(color border, 0.5s, linear)
+
+// transition
+@mixin transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/// Animate css properties
+// usage
+// scss - @include animate(color);
+//     or @include animate(color width);
+//     or @include animate(color width, 1s, linear);
+//
+$animation-speed: 0.3s !default;
+
+@mixin animate($properties, $duration: $animation-speed, $easing: ease-in-out) {
+  $list: ();
+  @each $prop in $properties {
+    $str: #{$prop} #{$duration} #{$easing};
+    $list: join($list, #{$str}, comma);
+  }
+  transition: $list;
+}
+
+// @use 'styles/mixins' as mixins; - if you want to use in in components folder
+// @use 'path-to-file/mixins' as mixins; - if you want to use inside styles folder
+
+//e.g  @include mixins.hover {}
+@mixin hover() {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}

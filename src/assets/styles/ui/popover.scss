@@ -1,0 +1,60 @@
+@use '../mixins.scss' as mixins;
+:root {
+  --p-popover-arrow-offset: 10px;
+  --p-popover-gutter: 10px;
+  --p-popover-background: rgb(var(--app-color-light));
+  --p-popover-color: rgb(var(--app-color-dark));
+  --p-popover-border-color: transparent;
+  --p-popover-border-radius: var(--admin-border-radius-sm);
+
+  --p-overlay-popover-shadow: 0 4px 6px -1px rgb(var(--app-color-black) / 0.1),
+    0 2px 4px -2px rgb(var(--app-color-black) / 0.1);
+
+  --p-popover-shadow: var(--p-overlay-popover-shadow);
+}
+
+.admin-popover {
+  &.p-popover {
+    border: none;
+
+    .p-menu {
+      &-list {
+        gap: 0;
+      }
+
+      a,
+      button {
+        padding: 10px;
+        display: block;
+        width: 100%;
+        text-align: left;
+
+        @include mixins.animate(color background-color);
+
+        @include mixins.hover() {
+          color: rgb(var(--app-color-light));
+          background-color: rgb(var(--app-color-dark));
+        }
+      }
+    }
+  }
+}
+
+.p-popover {
+  margin-top: 20px;
+  background: rgb(var(--app-color-light));
+  color: rgb(var(--app-color-dark));
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
+  &-content {
+    border: 1px solid rgb(var(--app-color-grey));
+
+    .p-menu {
+      border: none;
+    }
+  }
+}
